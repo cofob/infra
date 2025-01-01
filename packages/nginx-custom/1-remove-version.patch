@@ -1,0 +1,16 @@
+--- a/src/http/ngx_http_header_filter_module.c
++++ b/src/http/ngx_http_header_filter_module.c
+@@ -49,1 +49,1 @@
+-static u_char ngx_http_server_string[] = "Server: nginx" CRLF;
++static u_char ngx_http_server_string[] = "Server: madloba" CRLF;
+--- a/src/http/ngx_http_special_response.c
++++ b/src/http/ngx_http_special_response.c
+@@ -33,7 +33,7 @@ static u_char ngx_http_error_build_tail[] =
+ 
+ 
+ static u_char ngx_http_error_tail[] =
+-"<hr><center>nginx</center>" CRLF
++"<hr><center>madloba</center>" CRLF
+ "</body>" CRLF
+ "</html>" CRLF
+ ;

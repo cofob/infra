@@ -1,0 +1,14 @@
+groups:
+  - name: system_boot
+    rules:
+      - alert: SystemBootWarning
+        expr: |
+          sum by (host) (
+            count_over_time({job="systemd-journal",unit!="loki.service",unit!="grafana.service"} |= "Reached target Multi-User System." [5m])
+          ) > 0
+        labels:
+          severity: warning
+          noresolved: true
+        annotations:
+          summary: "System Boot Detected on {{ $labels.host }}"
+          description: "A system boot has been detected on host {{ $labels.host }}. The target 'Multi-User System' has been reached."

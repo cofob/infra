@@ -1,0 +1,15 @@
+groups:
+  - name: firewall
+    rules:
+      - alert: pfSenseRefused
+        expr: |
+          sum by (host, src, dst, dst_port, proto) (
+            count_over_time({job="syslog", app="filterlog", action="block", interface=~"(vtnet5|vtnet6|vtnet7)"}[5m])
+          ) > 0
+        labels:
+          severity: warning
+          noresolved: true
+          nosend: true
+        annotations:
+          summary: "Blocked packet detected on pfSense"
+          description: "Blocked packet detected from {{ $labels.src }} to {{ $labels.dst }} ({{ $labels.host }}) with protocol {{ $labels.proto }} and destination port {{ $labels.dst_port }}. Check the firewall logs for more information."

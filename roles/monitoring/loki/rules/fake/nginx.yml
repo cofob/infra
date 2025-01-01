@@ -1,0 +1,9 @@
+groups:
+  - name: NginxRules
+    interval: 1m
+    rules:
+      - record: nginx:requests:rate1m
+        expr: |
+          sum by (host, domain) (
+            rate({job="nginx",type="access"}[1m])
+          )

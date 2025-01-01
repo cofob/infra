@@ -1,0 +1,23 @@
+groups:
+  - name: earlyoom
+    rules:
+      - alert: EarlyOOMKilled
+        expr: |
+          sum by (host, pid, uid, user, oom_score, mem, cmdline) (
+            count_over_time(
+              {unit="earlyoom.service"}
+              |~ `sending SIG(TERM|KILL) to process \d+ uid \d+ "\w+": oom_score \d+, VmRSS \d+ \w+, cmdline ".+"`
+              | regexp `sending (?P<signal>SIG(TERM|KILL)) to process (?P<pid>\d+) uid (?P<uid>\d+) "(?P<user>\w+)": oom_score (?P<oom_score>(\d+)), VmRSS (?P<mem>(\d+ \w+)), cmdline "(?P<cmdline>(.+))"`[5m]
+            )
+          ) > 0
+        labels:
+          severity: warning
+          noresolved: true
+        annotations:
+          summary: "EarlyOOM killed process detected on {{ $labels.host }}"
+          description: |
+            The process was consuming too much memory and was killed to prevent the system from becoming unresponsive.
+
+            Info: PID: {{ $labels.pid }}, UID: {{ $labels.uid }} ({{ $labels.user }}), OOM Score: {{ $labels.oom_score }}, Memory: {{ $labels.mem }}, Command: "{{ $labels.cmdline }}".
+
+            Check the journal logs for more information.

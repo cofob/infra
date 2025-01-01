@@ -1,0 +1,6 @@
+.direnv
+result
+key
+*.local
+local/
+.DS_Store
