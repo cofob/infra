@@ -20,7 +20,7 @@ in {
       path = [ pkgs.podman ];
       environment = {
         CONTAINER_TAG =
-          "ghcr.io/marc1307/tailscale-cloudflare-dnssync@sha256:d5f1698f13626a9610c2631553ae74ea4eb75ae33bc636fb980a12cf0c09bc21";
+          "ghcr.io/cofob/tailscale-cloudflare-dnssync:main@sha256:cb0791a44dd29a730a52c9b0fa36afe08ff48cbeef6837a03037b1f6f212c0a8";
         CONTAINER_NAME = "cf-ts-dnssync";
         ENV_FILE = "${config.age.secrets.credentials-cf-ts-dnssync.path}";
       };
