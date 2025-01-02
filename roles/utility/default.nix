@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./cf-ts-dnssync.nix ];
+  imports = [ ./cf-ts-dnssync.nix ./cf-opn-dnssync.nix ];
 }

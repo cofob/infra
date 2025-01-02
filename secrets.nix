@@ -67,4 +67,7 @@ in {
   # Cloudflare Tailscale DNS sync
   "secrets/credentials/cf-ts-dnssync.age".publicKeys = all-users
     ++ systems.services;
+  # Cloudflare OPNsense DNS sync
+  "secrets/credentials/cf-opn-dnssync.age".publicKeys = all-users
+    ++ systems.services;
 }
