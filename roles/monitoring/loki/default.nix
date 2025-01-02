@@ -1,8 +1,10 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.roles.loki;
+let cfg = config.roles.monitoring.loki;
 in {
-  options.roles.loki = { enable = lib.mkEnableOption "Enable loki role"; };
+  options.roles.monitoring.loki = {
+    enable = lib.mkEnableOption "Enable loki role";
+  };
 
   config = lib.mkIf cfg.enable {
     age.secrets.credentials-loki-variables.file =

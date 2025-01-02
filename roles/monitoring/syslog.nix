@@ -1,8 +1,8 @@
 { config, lib, ... }:
 
-let cfg = config.roles.syslog;
+let cfg = config.roles.monitoring.syslog;
 in {
-  options.roles.syslog = {
+  options.roles.monitoring.syslog = {
     enable = lib.mkOption {
       default = false;
       type = lib.types.bool;

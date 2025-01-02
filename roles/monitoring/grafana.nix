@@ -1,8 +1,8 @@
 { lib, config, ... }:
 
-let cfg = config.roles.grafana;
+let cfg = config.roles.monitoring.grafana;
 in {
-  options.roles.grafana = {
+  options.roles.monitoring.grafana = {
     enable = lib.mkEnableOption "Enable grafana role";
   };
 

@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 let
-  cfg = config.roles.prometheus;
+  cfg = config.roles.monitoring.prometheus;
   exporterHosts = port: configName:
     map (n: "${n}:${port}") (pkgs.crossSystem.filterSystemNamesWithDomain
       (name: system-config: system-config.custom.monitoring."${configName}"));
@@ -11,7 +11,7 @@ let
   nginx-exporter-hosts = exporterHosts "9104" "enableNginxExporters";
   postgres-hosts = exporterHosts "9105" "enablePostgresExporter";
 in {
-  options.roles.prometheus = {
+  options.roles.monitoring.prometheus = {
     enable = lib.mkEnableOption "Enable prometheus role";
   };
 

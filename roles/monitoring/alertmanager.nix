@@ -1,8 +1,8 @@
 { lib, config, pkgs, ... }:
 
-let cfg = config.roles.alertmanager;
+let cfg = config.roles.monitoring.alertmanager;
 in {
-  options.roles.alertmanager = {
+  options.roles.monitoring.alertmanager = {
     enable = lib.mkEnableOption "Enable AlertManager role";
   };
 
