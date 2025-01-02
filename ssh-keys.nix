@@ -22,6 +22,9 @@ in rec {
     monitoring = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPQ6LAiM+numnlihD0qLoPHmk3FSc5xwiyZqonXq9WFv"
     ];
+    services = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIkmcdU3F/S+K9DYcw3jI9FoPwq8yysIgBL+RCGJRUw"
+    ];
   };
 
   roles = { monitoring = systems.monitoring; };

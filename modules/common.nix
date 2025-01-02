@@ -143,8 +143,8 @@ in {
       };
 
       # Use docker by default for containers.
-      virtualisation.oci-containers.backend = "docker";
-      virtualisation.docker.autoPrune.enable = true;
+      virtualisation.oci-containers.backend = "podman";
+      virtualisation.podman.autoPrune.enable = true;
 
       # User-space OOM killer to prevent system freezes.
       services.earlyoom.enable = lib.mkDefault true;

@@ -63,4 +63,8 @@ in {
   # Write password
   "secrets/credentials/prometheus/write-password.age".publicKeys = all-users
     ++ roles.monitoring;
+
+  # Cloudflare Tailscale DNS sync
+  "secrets/credentials/cf-ts-dnssync.age".publicKeys = all-users
+    ++ systems.services;
 }
