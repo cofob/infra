@@ -24,6 +24,7 @@ in rec {
     ];
     services = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGIkmcdU3F/S+K9DYcw3jI9FoPwq8yysIgBL+RCGJRUw"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMXbNpPL++f4fd5t3hJ77agJRQI+S7wwVaPa/ExVTQf"
     ];
   };
 

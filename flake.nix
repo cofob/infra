@@ -17,6 +17,11 @@
       inputs.utils.follows = "flake-utils";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvirt = {
+      url = "github:AshleyYakeley/NixVirt";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, flake-utils, agenix, deploy-rs, ... }@attrs:

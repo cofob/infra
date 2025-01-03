@@ -1,8 +1,9 @@
-{ agenix, ... }:
+{ agenix, nixvirt, ... }:
 
 {
   imports = [
     agenix.nixosModules.default
+    nixvirt.nixosModules.default
 
     ./common.nix
     ./users.nix

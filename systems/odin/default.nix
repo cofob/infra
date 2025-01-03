@@ -1,16 +1,9 @@
 { ... }:
 
 {
-  services.btrfs.autoScrub.enable = true;
+  imports = [ ./domains ];
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemu.runAsRoot = false;
-  # Allow management of libvirtd over SSH
-  virtualisation.libvirtd.extraConfig = ''
-    unix_sock_rw_perms = "0770";
-    unix_sock_group = "libvirtd"
-  '';
-  users.users.cofob.extraGroups = [ "libvirtd" ];
+  services.btrfs.autoScrub.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   services.tailscale.enable = true;

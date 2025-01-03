@@ -291,7 +291,8 @@ in {
     })
     (lib.mkIf cfg.setup-age.enable {
       # Setup age.
-      age.identityPaths = lib.mkDefault [ "/etc/ssh/ssh_host_ed25519_key" ];
+      age.identityPaths =
+        lib.mkDefault [ "/etc/ssh/ssh_host_ed25519_key" "/age/key" ];
     })
     (lib.mkIf cfg.setup-grub.enable {
       # Use the GRUB 2 boot loader.

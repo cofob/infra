@@ -14,6 +14,9 @@ in {
   "secrets/passwords/root.age".publicKeys = all;
   "secrets/passwords/cofob.age".publicKeys = all;
 
+  # SSH VM keys
+  "secrets/ssh-keys/empty.age".publicKeys = all-users ++ systems.odin;
+
   # Credentials
   # Tailscale
   "secrets/credentials/tailscale/authkey.age".publicKeys = all;
