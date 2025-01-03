@@ -79,7 +79,7 @@
     networks."25-br1" = {
       matchConfig = { Name = "br1"; };
       networkConfig = {
-        Address = "10.190.0.0/18";
+        Address = "10.190.0.0/24";
         DNS = "10.190.0.1";
         Gateway = "10.190.0.1";
       };
@@ -87,7 +87,7 @@
       routes = [
         # VPN
         {
-          Destination = "10.190.64.0/18";
+          Destination = "10.190.0.0/17";
           Gateway = "10.190.0.1";
           Metric = 10;
         }
