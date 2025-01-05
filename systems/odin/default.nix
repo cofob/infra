@@ -94,6 +94,4 @@
     useDHCP = false;
     networkmanager.enable = false;
   };
-
-  meta.ip = "10.190.0.0";
 }

@@ -17,11 +17,6 @@
           name = name;
           value = getSystem name;
         }) systemNames);
-        # Attribute set of IPs of all systems. The attribute name is the system name.
-        systemIPs = builtins.listToAttrs (map (name: {
-          name = name;
-          value = allSystems."${name}".meta.ip;
-        }) systemNames);
         # Filter out systems names that don't match a predicate.
         filterSystemNames = p:
           builtins.filter (name: (p name (getSystem name))) systemNames;

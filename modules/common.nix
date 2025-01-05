@@ -28,6 +28,11 @@ in {
       type = lib.types.bool;
       description = "Enable VM defaults";
     };
+    declarative-vm.enable = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "Enable declarative VM configuration";
+    };
     tmp-defaults.enable = lib.mkOption {
       default = true;
       type = lib.types.bool;
@@ -72,6 +77,11 @@ in {
       default = cfg.open-ssh-port.enable;
       type = lib.types.bool;
       description = "Open SSH port for Tailscale";
+    };
+    tailscale.ephemeral = lib.mkOption {
+      default = false;
+      type = lib.types.bool;
+      description = "Use ephemeral authkey for Tailscale";
     };
     configure-acme.enable = lib.mkOption {
       default = true;
@@ -216,6 +226,27 @@ in {
       # Enable MTR (My Traceroute) program.
       programs.mtr.enable = lib.mkDefault true;
     }
+    (lib.mkIf (!cfg.declarative-vm.enable) {
+      # Enable storage optimisation only for non-declarative VMs.
+      # (declarative VMs use network storage and don't need store optimisation)
+      nix = {
+        # Enable garbage collection for the Nix store.
+        # This will automatically run the garbage collector on a weekly basis.
+        gc = {
+          automatic = true;
+          dates = "weekly";
+          options = "--delete-older-than 14d";
+        };
+
+        # Nix store optimisation.
+        # This will automatically optimise the Nix store on a weekly basis.
+        optimise = {
+          automatic = true;
+          dates = [ "weekly" ];
+        };
+        settings.auto-optimise-store = true;
+      };
+    })
     (lib.mkIf cfg.vm-defaults.enable {
       # Enable VirIO drivers for QEMU guests.
       boot.initrd.availableKernelModules = [
@@ -240,6 +271,26 @@ in {
       # This allows the host to communicate with the guest and perform various
       # operations, such as shutting down the guest.
       services.qemuGuest.enable = true;
+
+      # Don't run ntpd in the guest. It should get the correct time from KVM.
+      services.timesyncd.enable = false;
+
+      # Wireless won't work in the VM.
+      networking.wireless.enable = lib.mkForce false;
+      services.connman.enable = lib.mkForce false;
+    })
+    (lib.mkIf cfg.declarative-vm.enable {
+      # Disable bootloader in the VM, because we boot directly, without a bootloader.
+      boot.loader = {
+        grub.enable = lib.mkForce false;
+        systemd-boot.enable = lib.mkForce false;
+        supportsInitrdSecrets = lib.mkForce false;
+      };
+      custom.common.setup-grub.enable = lib.mkForce false;
+      # Stub bootloader installation script.
+      system.build.installBootLoader = lib.mkForce (pkgs.writeShellScript "install-bootloader" ''
+        echo "[VM] Skipping bootloader installation"
+      '');
     })
     (lib.mkIf (cfg.setup-age.enable && cfg.configure-acme.enable) {
       # Accept CA ToS
@@ -361,7 +412,10 @@ in {
     (lib.mkIf cfg.tailscale.enable {
       # Enable Tailscale.
       age.secrets.credentials-tailscale-authkey.file =
-        "${pkgs.secrets}/credentials/tailscale/authkey.age";
+        if cfg.tailscale.ephemeral then
+          "${pkgs.secrets}/credentials/tailscale/authkey-ephemeral.age"
+        else
+          "${pkgs.secrets}/credentials/tailscale/authkey.age";
       services.tailscale = {
         enable = true;
         authKeyFile = config.age.secrets.credentials-tailscale-authkey.path;

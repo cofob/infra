@@ -167,7 +167,7 @@ in {
         '';
       };
 
-      virtualHosts."${config.meta.ip}" = {
+      virtualHosts."loki-metrics" = {
         listen = [{
           addr = "0.0.0.0";
           port = 9106;
@@ -176,8 +176,9 @@ in {
         locations."= /metrics" = {
           proxyPass = "http://127.0.0.1:3100";
           extraConfig = ''
-            allow ${pkgs.crossSystem.systemIPs.monitoring};
-            deny all;
+            # TODO: somehow allow only monitoring IPs (or use basic auth)
+            # allow ${pkgs.crossSystem.systemIPs.monitoring};
+            # deny all;
           '';
         };
 

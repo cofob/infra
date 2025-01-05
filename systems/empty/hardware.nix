@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   fileSystems."/" = {
@@ -33,7 +33,7 @@
 
   # Overlay filesystem for /nix/store, uniting the remote and local nix stores
   # If file is not found locally, it will be fetched from the remote store
-  # Write operations are stored in tmpfs
+  # Write operations are stored in the local filesystem
   fileSystems."/nix/store" = {
     overlay = {
       lowerdir = [ "/nix/.ro-store" ];

@@ -20,6 +20,7 @@ in {
   # Credentials
   # Tailscale
   "secrets/credentials/tailscale/authkey.age".publicKeys = all;
+  "secrets/credentials/tailscale/authkey-ephemeral.age".publicKeys = all;
   # Proxmox Backup
   "secrets/credentials/proxmox-backup/key.age".publicKeys = all;
   "secrets/credentials/proxmox-backup/env.age".publicKeys = all;

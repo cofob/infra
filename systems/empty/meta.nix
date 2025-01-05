@@ -1,0 +1,1 @@
+{ deploy_addr = "empty-1.ts.madloba.org"; }

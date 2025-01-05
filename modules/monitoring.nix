@@ -52,7 +52,7 @@ in {
     };
 
     monitorIp = lib.mkOption {
-      default = pkgs.crossSystem.systemIPs.monitoring;
+      default = "10.190.0.3";
       type = lib.types.str;
       description = "IP address of the monitoring server";
     };
