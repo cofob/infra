@@ -30,6 +30,9 @@ in {
   # Music
   "secrets/credentials/cloudflare-tunnels/music.age".publicKeys = all-users
     ++ systems.services;
+  # Aria2
+  "secrets/credentials/aria2/rpc-secret.age".publicKeys = all-users
+    ++ systems.services;
 
   # Loki
   # Read password (for Nginx)

@@ -11,6 +11,15 @@ in {
       enable = true;
     };
 
-    services.aria2.enable = true;
+    age.secrets.credentials-aria2-rpc-secret = {
+      file = "${config.secrets}/credentials/aria2/rpc-secret.age";
+      owner = "aria2";
+      group = "aria2";
+    };
+
+    services.aria2 = {
+      enable = true;
+      rpcSecretFile = config.age.secrets.credentials-aria2-rpc-secret.path;
+    };
   };
 }
