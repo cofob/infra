@@ -18,7 +18,6 @@ in {
         TranscodingCacheSize = "40960MiB";
         BaseUrl = "https://music.madloba.org";
         EnableSharing = "true";
-        EnableTranscodingConfig = "true";
         LastFM.Enabled = "true";
       };
     };
