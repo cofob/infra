@@ -15,7 +15,7 @@ in {
       settings = {
         MusicFolder = "/mnt/music";
         FFmpegPath = "${pkgs.ffmpeg}/bin/ffmpeg";
-        TranscodingCacheSize = "40960MiB";
+        TranscodingCacheSize = "4096MiB";
         BaseUrl = "https://music.madloba.org";
         EnableSharing = "true";
         LastFM.Enabled = "true";
