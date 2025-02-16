@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 let cfg = config.roles.media.lidarr;
 in {
@@ -12,7 +12,7 @@ in {
     };
 
     age.secrets.credentials-aria2-rpc-secret = {
-      file = "${config.secrets}/credentials/aria2/rpc-secret.age";
+      file = "${pkgs.secrets}/credentials/aria2/rpc-secret.age";
       owner = "aria2";
       group = "aria2";
     };
