@@ -1,8 +1,8 @@
 { lib, config, ... }:
 
-let cfg = config.roles.media.radarr;
+let cfg = config.roles.media.jellyfin;
 in {
-  options.roles.media.radarr = {
+  options.roles.media.jellyfin = {
     enable = lib.mkEnableOption "Enable jellyfin role";
   };
 
