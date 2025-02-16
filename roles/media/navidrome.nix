@@ -24,20 +24,5 @@ in {
     # Load the configuration with secrets
     systemd.services.navidrome.serviceConfig.EnvironmentFile =
       config.age.secrets.configs-navidrome.path;
-
-    services.nginx = {
-      enable = true;
-
-      virtualHosts."music.madloba.org" = {
-        locations."/" = { proxyPass = "http://127.0.0.1:4533"; };
-
-        extraConfig = ''
-          access_log /var/log/nginx/music.madloba.org-access.log json_combined;
-          error_log /var/log/nginx/music.madloba.org-error.log;
-        '';
-      };
-    };
-
-    networking.firewall.allowedTCPPorts = [ 80 443 ];
   };
 }

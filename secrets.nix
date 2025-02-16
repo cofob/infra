@@ -26,6 +26,10 @@ in {
   "secrets/credentials/proxmox-backup/env.age".publicKeys = all;
   # Cloudflare ACME DNS
   "secrets/credentials/cloudflare/api-token.age".publicKeys = all;
+  # Cloudflare Tunnels
+  # Music
+  "secrets/credentials/cloudflare-tunnels/music.age".publicKeys = all-users
+    ++ systems.services;
 
   # Loki
   # Read password (for Nginx)
