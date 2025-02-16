@@ -7,11 +7,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets.credentials-miniflux-admin = {
-      file = "${pkgs.secrets}/credentials/miniflux/admin.age";
-      owner = "miniflux";
-      group = "miniflux";
-    };
+    age.secrets.credentials-miniflux-admin.file = "${pkgs.secrets}/credentials/miniflux/admin.age";
 
     services.miniflux = {
       enable = true;
