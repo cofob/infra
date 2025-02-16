@@ -11,5 +11,10 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/movies" = {
+    device = "/dev/disk/by-uuid/c548b231-00cb-454d-bda1-d63c062ae4f0";
+    fsType = "ext4";
+  };
+
   swapDevices = [ ];
 }

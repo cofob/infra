@@ -4,7 +4,9 @@
   roles.utility.cf-ts-dnssync.enable = true;
   roles.utility.cf-opn-dnssync.enable = true;
   roles.media.navidrome.enable = true;
+  roles.media.jellyfin.enable = true;
   roles.media.lidarr.enable = true;
+  roles.media.radarr.enable = true;
   roles.media.nzbget.enable = true;
   roles.media.nzbhydra2.enable = true;
   roles.media.jackett.enable = true;
