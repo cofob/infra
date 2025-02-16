@@ -5,8 +5,11 @@
   roles.utility.cf-opn-dnssync.enable = true;
   roles.media.navidrome.enable = true;
 
-  age.secrets.credentials-cloudflare-tunnels-music.file =
-    "${pkgs.secrets}/credentials/cloudflare-tunnels/music.age";
+  age.secrets.credentials-cloudflare-tunnels-music = {
+    file = "${pkgs.secrets}/credentials/cloudflare-tunnels/music.age";
+    owner = "cloudflared";
+    group = "cloudflared";
+  };
 
   services.cloudflared = {
     enable = true;
