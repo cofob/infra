@@ -5,6 +5,7 @@
   roles.utility.cf-opn-dnssync.enable = true;
   roles.media.navidrome.enable = true;
   roles.media.lidarr.enable = true;
+  roles.media.nzbget.enable = true;
   roles.rss.miniflux.enable = true;
 
   age.secrets.credentials-cloudflare-tunnels-music = {
