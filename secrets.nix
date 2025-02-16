@@ -74,4 +74,7 @@ in {
   # Cloudflare OPNsense DNS sync
   "secrets/credentials/cf-opn-dnssync.age".publicKeys = all-users
     ++ systems.services;
+
+  # Navidrome config
+  "secrets/configs/navidrome.age".publicKeys = all-users ++ systems.services;
 }

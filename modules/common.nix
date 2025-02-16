@@ -288,9 +288,10 @@ in {
       };
       custom.common.setup-grub.enable = lib.mkForce false;
       # Stub bootloader installation script.
-      system.build.installBootLoader = lib.mkForce (pkgs.writeShellScript "install-bootloader" ''
-        echo "[VM] Skipping bootloader installation"
-      '');
+      system.build.installBootLoader = lib.mkForce
+        (pkgs.writeShellScript "install-bootloader" ''
+          echo "[VM] Skipping bootloader installation"
+        '');
     })
     (lib.mkIf (cfg.setup-age.enable && cfg.configure-acme.enable) {
       # Accept CA ToS

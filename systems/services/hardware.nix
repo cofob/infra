@@ -6,5 +6,10 @@
     fsType = "ext4";
   };
 
+  fileSystems."/mnt/music" = {
+    device = "/dev/disk/by-uuid/08c6d25b-af4e-4fe5-b970-395511e57af5";
+    fsType = "ext4";
+  };
+
   swapDevices = [ ];
 }

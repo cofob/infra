@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./monitoring ./utility ];
+  imports = [ ./monitoring ./utility ./media ];
 }

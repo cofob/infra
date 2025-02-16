@@ -89,6 +89,7 @@
             agenix.packages.${system}.default
             pkgs.nixfmt-classic
             pkgs.deploy-rs
+            pkgs.findutils
           ];
         };
 
