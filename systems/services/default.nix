@@ -18,9 +18,6 @@
       "74c5b52a-25a7-4a09-af63-5843be89e8cc" = {
         credentialsFile =
           "${config.age.secrets.credentials-cloudflare-tunnels-music.path}";
-        ingress = {
-          "music.madloba.org" = { service = "http://localhost:4533"; };
-        };
         default = "http_status:404";
       };
     };
