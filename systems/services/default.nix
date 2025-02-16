@@ -8,6 +8,7 @@
   roles.media.nzbget.enable = true;
   roles.media.nzbhydra2.enable = true;
   roles.media.jackett.enable = true;
+  roles.media.deluge.enable = true;
   roles.rss.miniflux.enable = true;
 
   age.secrets.credentials-cloudflare-tunnels-music = {
