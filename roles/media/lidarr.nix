@@ -3,13 +3,12 @@
 let cfg = config.roles.media.lidarr;
 in {
   options.roles.media.lidarr = {
-    enable = lib.mkEnableOption "Enable Lidarr, a Usenet/BitTorrent music downloader role";
+    enable = lib.mkEnableOption
+      "Enable Lidarr, a Usenet/BitTorrent music downloader role";
   };
 
   config = lib.mkIf cfg.enable {
-    services.lidarr = {
-      enable = true;
-    };
+    services.lidarr = { enable = true; };
 
     age.secrets.credentials-aria2-rpc-secret = {
       file = "${pkgs.secrets}/credentials/aria2/rpc-secret.age";

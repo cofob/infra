@@ -7,14 +7,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    age.secrets.credentials-miniflux-admin.file = "${pkgs.secrets}/credentials/miniflux/admin.age";
+    age.secrets.credentials-miniflux-admin.file =
+      "${pkgs.secrets}/credentials/miniflux/admin.age";
 
     services.miniflux = {
       enable = true;
-      config = {
-        LISTEN_ADDR = "localhost:8572";
-      };
-      adminCredentialsFile = "${pkgs.secrets}/credentials/miniflux/admin.age";
+      config = { LISTEN_ADDR = "localhost:8572"; };
+      adminCredentialsFile = config.age.secrets.credentials-miniflux-admin.path;
     };
   };
 }
