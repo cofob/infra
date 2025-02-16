@@ -9,7 +9,6 @@ in {
   config = lib.mkIf cfg.enable {
     services.lidarr = {
       enable = true;
-      dataDir = "/mnt/music";
     };
   };
 }
