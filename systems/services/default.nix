@@ -5,5 +5,7 @@
   roles.utility.cf-opn-dnssync.enable = true;
   roles.media.navidrome.enable = true;
 
+  services.cloudflared.enable = true;
+
   networking.hostName = "services";
 }

@@ -25,15 +25,10 @@ in {
     systemd.services.navidrome.serviceConfig.EnvironmentFile =
       config.age.secrets.configs-navidrome.path;
 
-    security.acme.certs."music.madloba.org" = { };
-
     services.nginx = {
       enable = true;
 
       virtualHosts."music.madloba.org" = {
-        forceSSL = true;
-        enableACME = true;
-
         locations."/" = { proxyPass = "http://127.0.0.1:4533"; };
 
         extraConfig = ''
