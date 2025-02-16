@@ -21,5 +21,7 @@ in {
       enable = true;
       rpcSecretFile = config.age.secrets.credentials-aria2-rpc-secret.path;
     };
+
+    users.users.lidarr.extraGroups = [ "aria2" ];
   };
 }

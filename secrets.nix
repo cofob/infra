@@ -33,6 +33,9 @@ in {
   # Aria2
   "secrets/credentials/aria2/rpc-secret.age".publicKeys = all-users
     ++ systems.services;
+  # Miniflux
+  "secrets/credentials/miniflux/admin.age".publicKeys = all-users
+    ++ systems.services;
 
   # Loki
   # Read password (for Nginx)
