@@ -11,5 +11,7 @@ in {
       enable = true;
       web.enable = true;
     };
+
+    networking.firewall.allowedTCPPorts = [ 6881 ];
   };
 }
