@@ -21,6 +21,6 @@ in {
       rpcSecretFile = config.age.secrets.credentials-aria2-rpc-secret.path;
     };
 
-    users.users.lidarr.extraGroups = [ "aria2" ];
+    users.users.lidarr.extraGroups = [ "aria2" "nzbget" ];
   };
 }
