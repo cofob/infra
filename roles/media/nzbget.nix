@@ -6,5 +6,9 @@ in {
     enable = lib.mkEnableOption "Enable nzbget role";
   };
 
-  config = lib.mkIf cfg.enable { services.nzbget.enable = true; };
+  config = lib.mkIf cfg.enable {
+    services.nzbget.enable = true;
+    nixpkgs.config.allowUnfreePredicate = pkg:
+      builtins.elem (lib.getName pkg) [ "unrar" ];
+  };
 }
