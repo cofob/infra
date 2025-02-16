@@ -6,5 +6,8 @@ in {
     enable = lib.mkEnableOption "Enable jellyfin role";
   };
 
-  config = lib.mkIf cfg.enable { services.jellyfin = { enable = true; }; };
+  config = lib.mkIf cfg.enable {
+    services.jellyfin = { enable = true; };
+    users.users.jellyfin.extraGroups = [ "radarr" ];
+  };
 }
