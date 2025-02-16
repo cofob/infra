@@ -6,6 +6,7 @@
   roles.media.navidrome.enable = true;
   roles.media.lidarr.enable = true;
   roles.media.nzbget.enable = true;
+  roles.media.nzbhydra2.enable = true;
   roles.rss.miniflux.enable = true;
 
   age.secrets.credentials-cloudflare-tunnels-music = {

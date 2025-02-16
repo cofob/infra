@@ -1,5 +1,5 @@
 { ... }:
 
 {
-  imports = [ ./navidrome.nix ./lidarr.nix ./nzbget.nix ];
+  imports = [ ./navidrome.nix ./lidarr.nix ./nzbget.nix ./nzbhydra2.nix ];
 }
