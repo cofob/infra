@@ -10,5 +10,7 @@ in {
     services.lidarr = {
       enable = true;
     };
+
+    services.aria2.enable = true;
   };
 }
