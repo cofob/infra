@@ -12,6 +12,7 @@
   roles.media.nzbhydra2.enable = true;
   roles.media.jackett.enable = true;
   roles.media.deluge.enable = true;
+  roles.media.bitmagnet.enable = true;
   roles.rss.miniflux.enable = true;
 
   virtualisation.podman.enable = true;

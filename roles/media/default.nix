@@ -10,5 +10,6 @@
     ./nzbhydra2.nix
     ./jackett.nix
     ./deluge.nix
+    ./bitmagnet.nix
   ];
 }
